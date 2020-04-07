@@ -4,8 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import collectipoki.com.models.Pokemon;
 
-// not sure about this file. SerializedName might not be Pokemon, or worse we don't even need this file.
-// Pokemon response for INDIVIDUAL pokemons
+// Pokemon response for all pokemons
 
 public class PokemonResponse {
 

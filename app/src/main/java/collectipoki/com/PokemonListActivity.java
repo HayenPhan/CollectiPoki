@@ -34,11 +34,15 @@ public class PokemonListActivity extends BaseActivity {
 
     // Test request
     private void testRetrofitRequest() {
+
+        // The ServiceGenerator class uses Retrofit's Retrofit builder to create a new REST client with the given API base url ( BASE_URL )
         PokemonApi pokemonApi = ServiceGenerator.getPokemonApi();
 
+        // Create a new, identical call to this one which can be enqueued or executed even if this call has already been executed
         Call<PokemonListResponse> responseCall = pokemonApi
                 .searchPokemon();
 
+        // Handle response
         responseCall.enqueue(new Callback<PokemonListResponse>() {
             @Override
             public void onResponse(Call<PokemonListResponse> call, Response<PokemonListResponse> response) {
@@ -47,7 +51,7 @@ public class PokemonListActivity extends BaseActivity {
                     Log.d(TAG, "onResponse: " + response.body().toString());
                     List<Pokemon> pokemons = new ArrayList<>(response.body().getPokemons());
                     for(Pokemon pokemon: pokemons) {
-                        Log.d(TAG, "onResponse: " + pokemon.getCandy());
+                        Log.d(TAG, "onResponse: " + pokemon.getName());
                     }
                 } else {
                     Log.d(TAG, "onResponse: " + response.errorBody().toString());
