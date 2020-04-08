@@ -3,13 +3,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import collectipoki.com.adapters.OnPokemonListener;
+import collectipoki.com.adapters.PokemonRecyclerAdapter;
 import collectipoki.com.models.Pokemon;
 import collectipoki.com.requests.PokemonApi;
 import collectipoki.com.requests.ServiceGenerator;
@@ -19,45 +24,64 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PokemonListActivity extends BaseActivity {
+public class PokemonListActivity extends BaseActivity implements OnPokemonListener {
 
     private static final String TAG = "PokemonListActivity";
 
     // initiate View Model
 
     private PokemonListViewModel mPokemonListViewModel;
-
+    private RecyclerView mRecyclerView;
+    private PokemonRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Attach RecylerView to id
+        mRecyclerView = findViewById(R.id.pokemon_list);
+
         // Initiate View Model
         mPokemonListViewModel = new ViewModelProvider(this).get(PokemonListViewModel.class);
 
-         findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
+         /* findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 testRetrofitRequest();
             }
-        });
+        }); */
 
+         // Activate Recycler view
+        initRecyclerView();
         subscribeObservers();
+
+        //Test
+        testRetrofitRequest();
     }
 
     // Observe Live Data! Main advantage of using the MVVM architecture. The activity only updates when there's new data added to the list.
     private void subscribeObservers() {
         mPokemonListViewModel.getPokemons().observe(this, new Observer<List<Pokemon>>() {
             @Override
-            public void onChanged(List<Pokemon> pokemons) {
+            public void onChanged(@Nullable List<Pokemon> pokemons) {
                 if(pokemons != null) {
-                    //
+                    // List of pokemons
+                    mAdapter.setPokemons(pokemons);
                 }
             }
         });
     }
 
+    // Initializing RecyclerView
+
+    private void initRecyclerView() {
+
+        // Get the list from the View model
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new PokemonRecyclerAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
+    }
 
     // Test request
     private void testRetrofitRequest() {
@@ -90,5 +114,10 @@ public class PokemonListActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onPokemonClick(int position) {
+
     }
 }
