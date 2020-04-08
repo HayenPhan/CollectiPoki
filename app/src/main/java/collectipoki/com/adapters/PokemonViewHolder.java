@@ -18,15 +18,28 @@ public class PokemonViewHolder extends RecyclerView.ViewHolder implements View.O
     // Add Image View
     AppCompatImageView image;
 
-    public PokemonViewHolder(@NonNull View itemView) {
+    // When clicking on Pokemon View
+    OnPokemonListener onPokemonListener;
+
+    public PokemonViewHolder(@NonNull View itemView, OnPokemonListener onPokemonListener) {
         super(itemView);
+
+        this.onPokemonListener = onPokemonListener;
+
         name = itemView.findViewById(R.id.pokemon_name);
         spawn_time = itemView.findViewById(R.id.pokemon_spawn_time);
         image = itemView.findViewById(R.id.pokemon_image);
+
+        // Set onclick listener on entire view (this is referring to View.OnClickListener on line 13)
+        itemView.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+
+        // When view is clicked. getAdapterPosition will show the position of the Recyclerview that has been clicked on.
+
+        onPokemonListener.onPokemonClick(getAdapterPosition());
 
     }
 }
