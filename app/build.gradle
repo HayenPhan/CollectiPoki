@@ -51,4 +51,12 @@ dependencies {
     // LiveData
     //noinspection GradleDependency
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+
+    //Cardview
+    //noinspection GradleCompatible
+    implementation "com.android.support:cardview-v7:28.0.0"
+
+    //Recyclerview
+    //noinspection GradleCompatible
+    implementation "com.android.support:recyclerview-v7:28.0.0"
 }

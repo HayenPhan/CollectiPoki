@@ -42,27 +42,6 @@ public class PokemonApiClient {
 
     // ------MIGHT NOT USE THIS BECAUSE MAYBE NOT IMPLEMENTING SEARCH----- Make request to the server
 
-    public void searchPokemonsApi() {
 
-        // Set time out for the request with Future, so the user don't have to wait until data is fetched.
-        final Future handler = AppExecutors.getInstance().networkIO().submit(new Runnable() {
-            @Override
-            public void run() {
-                // retrieve data from rest api
 
-                // postvalue because this is running on a backgrond thread
-                //mPokemons.postValue();
-            }
-        });
-
-        // This runnable wil run after a set amount of time
-        AppExecutors.getInstance().networkIO().schedule(new Runnable() {
-            @Override
-            public void run() {
-                // let the user know that it's timed out
-                handler.cancel(true);
-            }
-        },  NETWORK_TIMEOUT, TimeUnit.MILLISECONDS);
-
-    }
 }

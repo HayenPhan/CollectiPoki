@@ -36,12 +36,12 @@ public class PokemonListActivity extends BaseActivity {
         // Initiate View Model
         mPokemonListViewModel = new ViewModelProvider(this).get(PokemonListViewModel.class);
 
-        /* findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
+         findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 testRetrofitRequest();
             }
-        }); */
+        });
 
         subscribeObservers();
     }
@@ -51,7 +51,9 @@ public class PokemonListActivity extends BaseActivity {
         mPokemonListViewModel.getPokemons().observe(this, new Observer<List<Pokemon>>() {
             @Override
             public void onChanged(List<Pokemon> pokemons) {
-
+                if(pokemons != null) {
+                    //
+                }
             }
         });
     }
