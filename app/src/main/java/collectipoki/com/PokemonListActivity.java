@@ -106,10 +106,12 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
             @Override
             public void onResponse(Call<PokemonListResponse> call, Response<PokemonListResponse> response) {
-                Pokemons = new ArrayList<>(response.body());
+                Pokemons = new ArrayList<>(response.body().getPokemons());
                 pokemonsAdapter= new PokemonRecyclerAdapter(PokemonListActivity.this, Pokemons);
                 pokemonRecyclerView.setAdapter(pokemonsAdapter);
                 Toast.makeText(PokemonListActivity.this,"Success",Toast.LENGTH_SHORT).show();
+
+                Log.i("Responsebdoy", response.body().toString());
             }
 
             @Override
