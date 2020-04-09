@@ -4,23 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:nestedScrollingEnabled="false"
     tools:context=".PokemonListActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pokemon_list"
-        android:layout_width="match_parent"
-        android:layout_height="541dp"
-        android:layout_marginStart="50dp"
 
-        android:background="#C77676"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pokemon_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="#C77676"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.652">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
-    </androidx.recyclerview.widget.RecyclerView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

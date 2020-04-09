@@ -87,6 +87,9 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         //mRecyclerView.setAdapter(mAdapter);
 
         pokemonRecyclerView = findViewById(R.id.pokemon_list);
+        //pokemonRecyclerView.setHasFixedSize(true);
+        //pokemonRecyclerView.setNestedScrollingEnabled(false);
+        pokemonRecyclerView.setItemViewCacheSize(20);
         pokemonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     }
@@ -107,11 +110,9 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
             @Override
             public void onResponse(Call<PokemonListResponse> call, Response<PokemonListResponse> response) {
                 Pokemons = new ArrayList<>(response.body().getPokemons());
-                pokemonsAdapter= new PokemonRecyclerAdapter(PokemonListActivity.this, Pokemons);
+                pokemonsAdapter = new PokemonRecyclerAdapter(PokemonListActivity.this, Pokemons);
                 pokemonRecyclerView.setAdapter(pokemonsAdapter);
-                Toast.makeText(PokemonListActivity.this,"Success",Toast.LENGTH_SHORT).show();
-
-                Log.i("Responsebdoy", response.body().toString());
+                Toast.makeText(PokemonListActivity.this,"Yaaay",Toast.LENGTH_SHORT).show();
             }
 
             @Override
