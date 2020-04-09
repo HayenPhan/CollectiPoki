@@ -2,6 +2,7 @@ package collectipoki.com;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
@@ -30,9 +31,11 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
     // initiate View Model
 
-    private PokemonListViewModel mPokemonListViewModel;
-    private RecyclerView mRecyclerView;
-    private PokemonRecyclerAdapter mAdapter;
+    //private PokemonListViewModel mPokemonListViewModel;
+
+    ArrayList<Pokemon> Pokemons = new ArrayList<>();
+    private PokemonRecyclerAdapter pokemonsAdapter;
+    private RecyclerView pokemonRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,10 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         setContentView(R.layout.activity_main);
 
         // Attach RecylerView to id
-        mRecyclerView = findViewById(R.id.pokemon_list);
+        //mRecyclerView = findViewById(R.id.pokemon_list);
 
         // Initiate View Model
-        mPokemonListViewModel = new ViewModelProvider(this).get(PokemonListViewModel.class);
+        //mPokemonListViewModel = new ViewModelProvider(this).get(PokemonListViewModel.class);
 
          /* findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,35 +55,40 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
             }
         }); */
 
+
          // Activate Recycler view
         initRecyclerView();
-        subscribeObservers();
+        //subscribeObservers();
 
         //Test
         testRetrofitRequest();
     }
 
     // Observe Live Data! Main advantage of using the MVVM architecture. The activity only updates when there's new data added to the list.
-    private void subscribeObservers() {
+    /* private void subscribeObservers() {
         mPokemonListViewModel.getPokemons().observe(this, new Observer<List<Pokemon>>() {
             @Override
             public void onChanged(@Nullable List<Pokemon> pokemons) {
                 if(pokemons != null) {
                     // List of pokemons
-                    mAdapter.setPokemons(pokemons);
+                    //mAdapter.setPokemons(pokemons);
                 }
             }
         });
-    }
+    } */
 
     // Initializing RecyclerView
 
     private void initRecyclerView() {
 
         // Get the list from the View model
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new PokemonRecyclerAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //mAdapter = new PokemonRecyclerAdapter(this);
+        //mRecyclerView.setAdapter(mAdapter);
+
+        pokemonRecyclerView = findViewById(R.id.pokemon_list);
+        pokemonRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     // Test request
@@ -95,24 +103,20 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
         // Handle response
         responseCall.enqueue(new Callback<PokemonListResponse>() {
+
             @Override
             public void onResponse(Call<PokemonListResponse> call, Response<PokemonListResponse> response) {
-                Log.d(TAG, "onResponse: server response" + response.toString());
-                if(response.code() == 200) {
-                    Log.d(TAG, "onResponse: " + response.body().toString());
-                    List<Pokemon> pokemons = new ArrayList<>(response.body().getPokemons());
-                    for(Pokemon pokemon: pokemons) {
-                        Log.d(TAG, "onResponse: " + pokemon.getName());
-                    }
-                } else {
-                    Log.d(TAG, "onResponse: " + response.errorBody().toString());
-                }
+                Pokemons = new ArrayList<>(response.body());
+                pokemonsAdapter= new PokemonRecyclerAdapter(PokemonListActivity.this, Pokemons);
+                pokemonRecyclerView.setAdapter(pokemonsAdapter);
+                Toast.makeText(PokemonListActivity.this,"Success",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<PokemonListResponse> call, Throwable t) {
 
             }
+
         });
     }
 

@@ -22,7 +22,7 @@ public class PokemonViewHolder extends RecyclerView.ViewHolder implements View.O
     // When clicking on Pokemon View
     OnPokemonListener onPokemonListener;
 
-    public PokemonViewHolder(View itemView, OnPokemonListener onPokemonListener) {
+    public PokemonViewHolder(View itemView) {  //public PokemonViewHolder(View itemView)
 
         super(itemView);
 
