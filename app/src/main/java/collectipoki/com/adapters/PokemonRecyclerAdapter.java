@@ -29,7 +29,7 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     //private OnPokemonListener mOnPokemonListener;
 
     //(1) Make arrayList with Nothing yet;
-    private ArrayList<Pokemon> Pokemons =new ArrayList<>();
+    private ArrayList<Pokemon> Pokemons = new ArrayList<>();
     private Context context;
     private OnPokemonListener mPokemonListener;
 

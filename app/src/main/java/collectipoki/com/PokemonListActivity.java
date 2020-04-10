@@ -32,6 +32,9 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
     public static final String URL = "image";
     public static final String NAME =  "name";
     public static final String SPAWN_TIME =  "spawn_time";
+    public static final String HEIGHT =  "height";
+    public static final String WEIGHT =  "weight";
+    public static final String TYPE =  "type";
 
     // initiate View Model
 
@@ -139,6 +142,9 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         detailIntent.putExtra(URL, clickedPokemon.getImg());
         detailIntent.putExtra(NAME, clickedPokemon.getName());
         detailIntent.putExtra(SPAWN_TIME, clickedPokemon.getSpawn_time());
+        detailIntent.putExtra(HEIGHT, clickedPokemon.getHeight());
+        detailIntent.putExtra(WEIGHT, clickedPokemon.getWeight());
+        detailIntent.putExtra(TYPE, clickedPokemon.getType());
 
         //Log.i("testie", String.valueOf(position));
 

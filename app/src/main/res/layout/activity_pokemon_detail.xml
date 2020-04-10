@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DEB0B0"
+    android:background="#FFFFFF"
     tools:context=".PokemonListActivity">
+
 
     <ImageView
         android:id="@+id/pokemon_image_detail"
         android:layout_width="256dp"
         android:layout_height="250dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="100dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,8 +23,9 @@
         android:id="@+id/pokemon_name_detail"
         android:layout_width="296dp"
         android:layout_height="74dp"
-        android:layout_marginTop="35dp"
+        android:fontFamily="@font/poppins_semibold"
         android:gravity="center"
+        android:letterSpacing="0.2"
         android:text="Bulbasaur"
         android:textColor="#000"
         android:textSize="@dimen/pokemon_name_text_size"
@@ -37,27 +38,117 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="TextView"
+        android:layout_marginEnd="50dp"
+        android:text="00:00"
+        android:fontFamily="@font/poppins_light"
+        android:letterSpacing="0.2"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemon_name" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
+
+    <TextView
+        android:id="@+id/pokemon_height_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/poppins_light"
+        android:letterSpacing="0.2"
+        android:text="2.00"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
+
+    <TextView
+        android:id="@+id/pokemon_weight_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/poppins_light"
+        android:letterSpacing="0.2"
+        android:text="25"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
+
+    <TextView
+        android:id="@+id/pokemon_type_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/poppins_light"
+        android:letterSpacing="0.2"
+        android:text="Grass, Water"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detailview"
-        app:layout_constraintBottom_toTopOf="@+id/pokemon_image"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.2"
+        android:text="Details Pokemon"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/pokemon_image_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_width="299dp"
-        android:layout_height="204dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.2"
+        android:text="Spawn time"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.2"
+        android:text="Height:"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.2"
+        android:shadowColor="#FFFFFF"
+        android:text="Weight"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0.2"
+        android:text="Type"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
