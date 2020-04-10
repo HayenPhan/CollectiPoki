@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Collecti Poki</string>
+    <string name="spawn_time">spawn time</string>
 </resources>

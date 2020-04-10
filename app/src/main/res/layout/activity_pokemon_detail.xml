@@ -11,10 +11,11 @@
         android:id="@+id/pokemon_image_detail"
         android:layout_width="256dp"
         android:layout_height="250dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="108dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,14 +23,14 @@
         android:id="@+id/pokemon_name_detail"
         android:layout_width="296dp"
         android:layout_height="74dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:gravity="center"
         android:text="Bulbasaur"
         android:textColor="#000"
         android:textSize="@dimen/pokemon_name_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemon_image" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_image_detail" />
 
     <TextView
         android:id="@+id/pokemon_spawn_time_detail"
@@ -50,5 +51,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:layout_width="299dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

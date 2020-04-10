@@ -144,7 +144,7 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
                 }
             });
-            
+
             // Entire viewholder onclick
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
