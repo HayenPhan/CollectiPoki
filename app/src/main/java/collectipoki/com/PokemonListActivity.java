@@ -1,4 +1,5 @@
 package collectipoki.com;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -112,6 +113,10 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
                 Pokemons = new ArrayList<>(response.body().getPokemons());
                 pokemonsAdapter = new PokemonRecyclerAdapter(PokemonListActivity.this, Pokemons);
                 pokemonRecyclerView.setAdapter(pokemonsAdapter);
+
+                // Call OnPokemonListener
+                pokemonsAdapter.setOnPokemonListener(PokemonListActivity.this::onPokemonClick);
+
                 Toast.makeText(PokemonListActivity.this,"Yaaay",Toast.LENGTH_SHORT).show();
             }
 
@@ -125,6 +130,6 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
     @Override
     public void onPokemonClick(int position) {
-
+        Intent detailIntent = new Intent(this, PokemonDetailActivity.class);
     }
 }

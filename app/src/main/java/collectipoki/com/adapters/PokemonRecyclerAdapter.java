@@ -19,6 +19,7 @@ import java.util.List;
 
 import collectipoki.com.R;
 import collectipoki.com.models.Pokemon;
+import collectipoki.com.adapters.OnPokemonListener;
 
 public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     // Add this after creating the PokemonViewHolder
@@ -29,6 +30,14 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     //(1) Make arrayList with Nothing yet;
     private ArrayList<Pokemon> Pokemons =new ArrayList<>();
     private Context context;
+    private OnPokemonListener mPokemonListener;
+
+    // set OnPokemonListener
+    public void setOnPokemonListener(OnPokemonListener listener) {
+
+        // mPokemonlistener is equal to the listener that gets passed
+        mPokemonListener = listener;
+    }
 
     // Constructor
 
@@ -112,6 +121,22 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             name = itemView.findViewById(R.id.pokemon_name);
             spawn_time = itemView.findViewById(R.id.pokemon_spawn_time);
             image = itemView.findViewById(R.id.pokemon_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Check if the listener exists
+
+                    if(mPokemonListener != null) {
+                        int position = getAdapterPosition();
+
+                        // Checks if position is still valid
+                        if(position != RecyclerView.NO_POSITION) {
+                            mPokemonListener.onPokemonClick(position);
+                        }
+                    }
+                }
+            });
 
         }
 
