@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -109,6 +110,10 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         // Add Image View
         AppCompatImageView image;
 
+        // Add Button View
+
+        Button redirectButton;
+
         // When clicking on Pokemon View
         OnPokemonListener onPokemonListener;
 
@@ -121,7 +126,26 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             name = itemView.findViewById(R.id.pokemon_name);
             spawn_time = itemView.findViewById(R.id.pokemon_spawn_time);
             image = itemView.findViewById(R.id.pokemon_image);
+            redirectButton = itemView.findViewById(R.id.pokemon_button);
 
+            // Button onclick
+            redirectButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if(mPokemonListener != null) {
+                        int position = getAdapterPosition();
+
+                        // Checks if position is still valid
+                        if(position != RecyclerView.NO_POSITION) {
+                            mPokemonListener.onPokemonClick(position);
+                        }
+                    }
+
+                }
+            });
+            
+            // Entire viewholder onclick
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
