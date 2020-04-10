@@ -28,7 +28,10 @@ import retrofit2.Response;
 
 public class PokemonListActivity extends BaseActivity implements OnPokemonListener {
 
-    private static final String TAG = "PokemonListActivity";
+    // Set names to prevent confusion
+    public static final String URL = "image";
+    public static final String NAME =  "name";
+    public static final String SPAWN_TIME =  "spawn_time";
 
     // initiate View Model
 
@@ -131,5 +134,15 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
     @Override
     public void onPokemonClick(int position) {
         Intent detailIntent = new Intent(this, PokemonDetailActivity.class);
+        Pokemon clickedPokemon = Pokemons.get(position);
+
+        detailIntent.putExtra(URL, clickedPokemon.getImg());
+        detailIntent.putExtra(NAME, clickedPokemon.getName());
+        detailIntent.putExtra(SPAWN_TIME, clickedPokemon.getSpawn_time());
+
+        //Log.i("testie", String.valueOf(position));
+
+        startActivity(detailIntent);
+
     }
 }
