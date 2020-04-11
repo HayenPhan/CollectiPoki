@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -69,6 +70,13 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
         //Test
         testRetrofitRequest();
+
+        Button buttonLayout = findViewById(R.id.buttonLayout);
+        buttonLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(PokemonListActivity.this, LayoutChangeActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     // Observe Live Data! Main advantage of using the MVVM architecture. The activity only updates when there's new data added to the list.
@@ -151,4 +159,6 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         startActivity(detailIntent);
 
     }
+
+
 }
