@@ -71,12 +71,8 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         //Test
         testRetrofitRequest();
 
-        Button buttonLayout = findViewById(R.id.buttonLayout);
-        buttonLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(PokemonListActivity.this, LayoutChangeActivity.class);
-            startActivity(intent);
-        });
-
+        // LayoutChange button
+        layoutChange();
     }
 
     // Observe Live Data! Main advantage of using the MVVM architecture. The activity only updates when there's new data added to the list.
@@ -158,6 +154,14 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
         startActivity(detailIntent);
 
+    }
+
+    public void layoutChange() {
+        Button buttonLayout = findViewById(R.id.buttonLayout);
+        buttonLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(PokemonListActivity.this, LayoutChangeActivity.class);
+            startActivity(intent);
+        });
     }
 
 
