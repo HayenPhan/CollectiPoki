@@ -1,41 +1,45 @@
 package collectipoki.com;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toolbar;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LayoutChangeActivity extends AppCompatActivity {
 
-    Toolbar mToolbar;
     Button mLightColor;
     Button mNormalColor;
     Button mDarkColor;
 
-    //Button mPokemonButton;
+    Button mPokemonButton;
+
+    ActionBar bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_layout);
 
-        mToolbar = findViewById(R.id.toolbar_main);
         mLightColor = findViewById(R.id.buttonLight);
         mNormalColor = findViewById(R.id.buttonNormal);
         mDarkColor = findViewById(R.id.buttonDark);
+        bar = getSupportActionBar();
+
 
         if(getColor() != getResources().getColor(R.color.colorPrimary)) {
-            mToolbar.setBackgroundColor(getColor());
             getWindow().setStatusBarColor(getColor());
         }
 
         mLightColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.lightColor));
+                bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B3FFEB")));
                 getWindow().setStatusBarColor(getResources().getColor(R.color.lightColor));
                 storeColor((getResources().getColor(R.color.lightColor)));
             }
@@ -44,7 +48,7 @@ public class LayoutChangeActivity extends AppCompatActivity {
         mNormalColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.normalColor));
+                bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#24EDB8")));
                 getWindow().setStatusBarColor(getResources().getColor(R.color.normalColor));
                 storeColor((getResources().getColor(R.color.normalColor)));
             }
@@ -53,7 +57,7 @@ public class LayoutChangeActivity extends AppCompatActivity {
         mDarkColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mToolbar.setBackgroundColor(getResources().getColor(R.color.darkColor));
+                bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00BD8B")));
                 getWindow().setStatusBarColor(getResources().getColor(R.color.darkColor));
                 storeColor((getResources().getColor(R.color.darkColor)));
             }

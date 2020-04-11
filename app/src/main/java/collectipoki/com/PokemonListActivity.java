@@ -37,6 +37,7 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
     public static final String WEIGHT =  "weight";
     public static final String TYPE =  "type";
 
+
     // initiate View Model
 
     //private PokemonListViewModel mPokemonListViewModel;
