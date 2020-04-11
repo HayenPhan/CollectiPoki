@@ -39,7 +39,7 @@ public class LayoutChangeActivity extends AppCompatActivity {
         mLightColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B3FFEB")));
+                //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B3FFEB")));
                 getWindow().setStatusBarColor(getResources().getColor(R.color.lightColor));
                 storeColor((getResources().getColor(R.color.lightColor)));
             }
@@ -48,7 +48,7 @@ public class LayoutChangeActivity extends AppCompatActivity {
         mNormalColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#24EDB8")));
+                //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#24EDB8")));
                 getWindow().setStatusBarColor(getResources().getColor(R.color.normalColor));
                 storeColor((getResources().getColor(R.color.normalColor)));
             }
@@ -57,7 +57,7 @@ public class LayoutChangeActivity extends AppCompatActivity {
         mDarkColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00BD8B")));
+                //bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00BD8B")));
                 getWindow().setStatusBarColor(getResources().getColor(R.color.darkColor));
                 storeColor((getResources().getColor(R.color.darkColor)));
             }

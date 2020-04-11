@@ -1,5 +1,6 @@
 package collectipoki.com;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,9 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
     private PokemonRecyclerAdapter pokemonsAdapter;
     private RecyclerView pokemonRecyclerView;
 
+    // Initialize sharedpreferences
+    private SharedPreferenceConfig preferencesConfig;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +76,11 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         //Test
         testRetrofitRequest();
 
-        // LayoutChange button
-        layoutChange();
+        //Sharedpreference login
+
+        preferencesConfig = new SharedPreferenceConfig(getApplicationContext());
+
+
     }
 
     // Observe Live Data! Main advantage of using the MVVM architecture. The activity only updates when there's new data added to the list.
@@ -157,12 +164,10 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
     }
 
-    public void layoutChange() {
-        Button buttonLayout = findViewById(R.id.buttonLayout);
-        buttonLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(PokemonListActivity.this, LayoutChangeActivity.class);
-            startActivity(intent);
-        });
+    public void logOut(View view) {
+        preferencesConfig.writeLoginStatus(false);
+        startActivity(new Intent (this, LoginActivity.class));
+        finish();
     }
 
 

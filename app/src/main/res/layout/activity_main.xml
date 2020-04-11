@@ -22,15 +22,16 @@
         </androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:id="@+id/buttonLayout"
+            android:id="@+id/logout"
             android:layout_width="104dp"
             android:layout_height="43dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
             android:background="@color/darkColor"
             android:letterSpacing="0.1"
+            android:onClick="logOut"
             android:padding="2dp"
-            android:text="Change layout"
+            android:text="logout"
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

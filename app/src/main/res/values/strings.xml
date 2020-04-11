@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Collecti Poki</string>
     <string name="spawn_time">spawn time</string>
+
+    <string name="user_name">Hayen</string>
+    <string name="user_password">hallo123</string>
+    <string name="login_preference">collectipoki.com_login_preference</string>
+    <string name="login_status_preference">collectipoki.com_login_status_preference</string>
 </resources>
