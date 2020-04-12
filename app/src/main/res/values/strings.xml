@@ -6,4 +6,5 @@
     <string name="user_password">hallo123</string>
     <string name="login_preference">collectipoki.com_login_preference</string>
     <string name="login_status_preference">collectipoki.com_login_status_preference</string>
+    <string name="title_activity_location">Map</string>
 </resources>

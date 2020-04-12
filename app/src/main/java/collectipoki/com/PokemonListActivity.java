@@ -170,5 +170,9 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         finish();
     }
 
-
+    public void redirectLocation(View view) {
+        Intent locationIntent = new Intent(this, LocationActivity.class);
+        startActivity(locationIntent);
+    }
+    
 }
