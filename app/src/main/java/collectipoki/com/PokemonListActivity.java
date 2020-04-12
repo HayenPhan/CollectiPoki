@@ -174,5 +174,5 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         Intent locationIntent = new Intent(this, LocationActivity.class);
         startActivity(locationIntent);
     }
-    
+
 }
