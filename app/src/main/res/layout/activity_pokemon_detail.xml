@@ -7,6 +7,13 @@
     android:background="#FFFFFF"
     tools:context=".PokemonListActivity">
 
+    <collectipoki.com.customview.CustomView
+        android:layout_width="260dp"
+        android:layout_height="254dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/pokemon_image_detail"
@@ -16,14 +23,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <collectipoki.com.customview.CustomView
-        android:layout_width="260dp"
-        android:layout_height="254dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
