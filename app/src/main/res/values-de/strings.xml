@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Collecti Poki</string>
+    <string name="title_detail">Details Pokemon</string>
+
+    <string name="spawn_time_detail_title">Laichzeit</string>
+    <string name="pokemon_spawn_time_detail">sdasda</string>
+
+    <string name="height_title_detail">Höhe</string>
+    <string name="pokemon_height_detail">sdasdsad</string>
+
+    <string name="weight_title_detail">Gewicht</string>
+    <string name="pokemon_weight_detail">dasdsada</string>
+
+    <string name="type_title_detail">Art</string>
+    <string name="pokemon_type_detail">dasdsad</string>
+</resources>

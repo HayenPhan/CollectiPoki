@@ -38,6 +38,7 @@ import static collectipoki.com.PokemonListActivity.TYPE;
 public class PokemonDetailActivity extends AppCompatActivity {
 
     Context context;
+    Locale locale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +95,7 @@ public class PokemonDetailActivity extends AppCompatActivity {
 
     private void showDialog() {
         // Array of languages
-        final String[] listItems = {"日本語", "한국어", "中文"};
+        final String[] listItems = {"日本語", "한국어", "German"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(PokemonDetailActivity.this);
         mBuilder.setTitle("Choose Language");
         mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
@@ -102,17 +103,20 @@ public class PokemonDetailActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 if(which == 0) {
                     // Japanese
-                    setLocale("ja_JP");
+                    setLocale("ja");
                     recreate();
                 }
                 else if(which == 1) {
                     // Korean
-                    setLocale("ko_KR");
+                    setLocale("ko");
                     recreate();
                 }
                 else if(which == 2) {
                     // Chinese
-                    setLocale("zh-rCN");
+                    setLocale("de");
+                    recreate();
+                } else {
+                    setLocale("en");
                     recreate();
                 }
 
@@ -128,11 +132,15 @@ public class PokemonDetailActivity extends AppCompatActivity {
     }
 
     private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        //config.locale = locale;
-        config.setLocale(locale);
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        locale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.setLocale(locale);
+        res.updateConfiguration(conf, dm);
+
+        //Intent intent = getIntent();
+        //finish();
+        //startActivity(intent);
     }
 }
