@@ -19,6 +19,7 @@ import java.util.List;
 
 import collectipoki.com.adapters.OnPokemonListener;
 import collectipoki.com.adapters.PokemonRecyclerAdapter;
+import collectipoki.com.customview.CustomView;
 import collectipoki.com.models.Pokemon;
 import collectipoki.com.requests.PokemonApi;
 import collectipoki.com.requests.ServiceGenerator;
@@ -77,9 +78,11 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
         testRetrofitRequest();
 
         //Sharedpreference login
-
         preferencesConfig = new SharedPreferenceConfig(getApplicationContext());
 
+        // Customview
+
+        CustomView customView = new CustomView(this);
 
     }
 

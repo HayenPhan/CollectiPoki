@@ -13,7 +13,7 @@
             android:layout_width="425dp"
             android:layout_height="833dp"
 
-            android:background="#C77676"
+            android:background="#FFFFFF"
             android:nestedScrollingEnabled="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
@@ -50,6 +50,14 @@
             android:textColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logout" />
+
+        <collectipoki.com.customview.CustomView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="248dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
