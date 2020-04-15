@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.Arrays;
 
 import collectipoki.com.adapters.PokemonRecyclerAdapter;
+import collectipoki.com.customview.CustomView;
 
 import static collectipoki.com.PokemonListActivity.URL;
 import static collectipoki.com.PokemonListActivity.NAME;
@@ -28,6 +29,9 @@ public class PokemonDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_detail);
+
+        // Customview
+        CustomView customView = new CustomView(this);
 
         Intent intent = getIntent();
 

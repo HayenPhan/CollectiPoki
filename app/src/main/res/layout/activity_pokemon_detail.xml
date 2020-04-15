@@ -19,6 +19,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <collectipoki.com.customview.CustomView
+        android:layout_width="260dp"
+        android:layout_height="254dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/pokemon_name_detail"
         android:layout_width="296dp"

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import collectipoki.com.R;
+import collectipoki.com.customview.CustomView;
 import collectipoki.com.models.Pokemon;
 import collectipoki.com.adapters.OnPokemonListener;
 
@@ -60,6 +61,8 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public PokemonRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         //Log.i("onCreateViewHolder", String.valueOf(mOnPokemonListener));
+
+        //CustomView customview = new CustomView(viewGroup.getContext());
 
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_pokemon_list_item, viewGroup, false);
         return new PokemonRecyclerAdapter.ViewHolder(view);

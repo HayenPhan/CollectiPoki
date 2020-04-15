@@ -82,7 +82,7 @@ public class PokemonListActivity extends BaseActivity implements OnPokemonListen
 
         // Customview
 
-        CustomView customView = new CustomView(this);
+        //CustomView customView = new CustomView(this);
 
     }
 
