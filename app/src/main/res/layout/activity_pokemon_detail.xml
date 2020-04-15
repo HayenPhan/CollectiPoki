@@ -46,9 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
-        android:text="00:00"
         android:fontFamily="@font/poppins_light"
         android:letterSpacing="0.2"
+        android:text="@string/pokemon_spawn_time_detail"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
@@ -61,7 +61,7 @@
         android:layout_marginEnd="48dp"
         android:fontFamily="@font/poppins_light"
         android:letterSpacing="0.2"
-        android:text="2.00"
+        android:text="@string/pokemon_height_detail"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
@@ -74,7 +74,7 @@
         android:layout_marginEnd="48dp"
         android:fontFamily="@font/poppins_light"
         android:letterSpacing="0.2"
-        android:text="25"
+        android:text="@string/pokemon_weight_detail"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
@@ -87,7 +87,7 @@
         android:layout_marginEnd="48dp"
         android:fontFamily="@font/poppins_light"
         android:letterSpacing="0.2"
-        android:text="Grass, Water"
+        android:text="@string/pokemon_type_detail"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
@@ -106,33 +106,33 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/spawn_time_detail_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/poppins_medium"
         android:letterSpacing="0.2"
-        android:text="Spawn time"
+        android:text="@string/spawn_time_detail_title"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pokemon_name_detail" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/height_title_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_medium"
         android:letterSpacing="0.2"
-        android:text="Height:"
+        android:text="@string/height_title_detail"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/spawn_time_detail_title" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/weight_title_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -140,22 +140,34 @@
         android:fontFamily="@font/poppins_medium"
         android:letterSpacing="0.2"
         android:shadowColor="#FFFFFF"
-        android:text="Weight"
+        android:text="@string/weight_title_detail"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/height_title_detail" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/type_title_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_medium"
         android:letterSpacing="0.2"
-        android:text="Type"
+        android:text="@string/type_title_detail"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/weight_title_detail" />
+
+    <ImageButton
+        android:id="@+id/changeLanguage"
+        android:layout_width="39dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/language" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,28 @@
 <resources>
     <string name="app_name">Collecti Poki</string>
-    <string name="spawn_time">spawn time</string>
+    <string name="spawn_time" translatable="false">spawn time</string>
 
-    <string name="user_name">Hayen</string>
-    <string name="user_password">hallo123</string>
-    <string name="login_preference">collectipoki.com_login_preference</string>
-    <string name="login_status_preference">collectipoki.com_login_status_preference</string>
-    <string name="title_activity_location">Map</string>
+    <string name="user_name" translatable="false">Hayen</string>
+    <string name="user_password" translatable="false">hallo123</string>
+    <string name="login_preference" translatable="false">collectipoki.com_login_preference</string>
+    <string name="login_status_preference" translatable="false">collectipoki.com_login_status_preference</string>
+    <string name="title_activity_location" translatable="false">Map</string>
+
+    // Language support
+
+    <string name="title_detail">Details Pokemon</string>
+
+    <string name="spawn_time_detail_title">Spawn time</string>
+    <string name="pokemon_spawn_time_detail">20:00</string>
+
+    <string name="height_title_detail">Height</string>
+    <string name="pokemon_height_detail">0.71</string>
+
+    <string name="weight_title_detail">Weight</string>
+    <string name="pokemon_weight_detail">6.9</string>
+
+    <string name="type_title_detail">Type</string>
+    <string name="pokemon_type_detail">Grass</string>
+
+
 </resources>

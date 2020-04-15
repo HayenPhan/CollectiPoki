@@ -1,17 +1,29 @@
 package collectipoki.com;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 import collectipoki.com.adapters.PokemonRecyclerAdapter;
 import collectipoki.com.customview.CustomView;
@@ -25,10 +37,14 @@ import static collectipoki.com.PokemonListActivity.TYPE;
 
 public class PokemonDetailActivity extends AppCompatActivity {
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_pokemon_detail);
+
 
         // Customview
         CustomView customView = new CustomView(this);
@@ -65,8 +81,58 @@ public class PokemonDetailActivity extends AppCompatActivity {
 
         Log.i("BLB", String.valueOf(pokemonType));
 
-
+        // Change Language
+        ImageButton changeLanguage = findViewById(R.id.changeLanguage);
+        changeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
 
     }
 
+    private void showDialog() {
+        // Array of languages
+        final String[] listItems = {"日本語", "한국어", "中文"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(PokemonDetailActivity.this);
+        mBuilder.setTitle("Choose Language");
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(which == 0) {
+                    // Japanese
+                    setLocale("ja_JP");
+                    recreate();
+                }
+                else if(which == 1) {
+                    // Korean
+                    setLocale("ko_KR");
+                    recreate();
+                }
+                else if(which == 2) {
+                    // Chinese
+                    setLocale("zh-rCN");
+                    recreate();
+                }
+
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+
+        // Show alert
+        mDialog.show();
+
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        //config.locale = locale;
+        config.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+    }
 }
