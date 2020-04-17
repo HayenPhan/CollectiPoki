@@ -190,7 +190,7 @@ public class LocationActivity extends FragmentActivity implements
                 // Move camera to location
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomBy(12)); // change numbers
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15.0f)); // change numbers
 
                 // Start location update
 
