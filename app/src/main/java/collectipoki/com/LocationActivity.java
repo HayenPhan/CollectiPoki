@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import com.google.android.gms.location.LocationListener;
 
@@ -78,12 +80,18 @@ public class LocationActivity extends FragmentActivity implements
 
         // Add pokemon markers to map, and add data object to each marker
 
+        int height = 100;
+        int width = 100;
+        BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.ic_pokemons);
+        Bitmap b = bitmapdraw.getBitmap();
+        Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+
         // Balbasaur
         mBalbasaur = mMap.addMarker(new MarkerOptions()
                 .position(BALBASAUR)
                 .title("Balbasaur")
                     .snippet("Find Balbasaur at this location")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
         mBalbasaur.setTag(0);
 
         // Charmander
@@ -91,7 +99,7 @@ public class LocationActivity extends FragmentActivity implements
                 .position(CHARMANDER)
                 .title("Charmander")
                     .snippet("Find Charmander at this location")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
         mCharmander.setTag(0);
 
 
@@ -163,6 +171,13 @@ public class LocationActivity extends FragmentActivity implements
             public void onLocationChanged(Location location) {
                 lastLocation = location;
 
+                // Change bitmap size
+                int height = 100;
+                int width = 100;
+                BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.ic_pokemon_user);
+                Bitmap b = bitmapdraw.getBitmap();
+                Bitmap userMarker = Bitmap.createScaledBitmap(b, width, height, false);
+
                 // Check if marker has already been set to a previous location and remove that marker.
                 // Null means it has been set to another location
                 if(currentMarker != null) {
@@ -182,7 +197,7 @@ public class LocationActivity extends FragmentActivity implements
                 markerOptions.title("Current location");
 
                 // Set color of marker
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(userMarker));
 
                 // Now set it on current location
                 currentMarker = mMap.addMarker(markerOptions);
