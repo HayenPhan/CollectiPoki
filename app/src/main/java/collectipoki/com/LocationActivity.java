@@ -38,6 +38,11 @@ public class LocationActivity extends FragmentActivity implements
     private GoogleMap mMap;
     private GoogleApiClient ApiClient;
 
+    // Pokemon locations
+    private static final LatLng BALBASAUR = new LatLng(51.543200, 4.476770);
+    private static final LatLng CHARMANDER = new LatLng(51.550529, 4.478660);
+
+
     // Last location
     private Location lastLocation;
 
@@ -45,6 +50,10 @@ public class LocationActivity extends FragmentActivity implements
     private LocationRequest locationRequest;
 
     private Marker currentMarker;
+
+    // Set marker pokemons
+    private Marker mBalbasaur;
+    private Marker mCharmander;
 
     private static final int User_Location_Code = 99;
 
@@ -66,6 +75,25 @@ public class LocationActivity extends FragmentActivity implements
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        // Add pokemon markers to map, and add data object to each marker
+
+        // Balbasaur
+        mBalbasaur = mMap.addMarker(new MarkerOptions()
+                .position(BALBASAUR)
+                .title("Balbasaur")
+                    .snippet("Find Balbasaur at this location")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        mBalbasaur.setTag(0);
+
+        // Charmander
+        mCharmander = mMap.addMarker(new MarkerOptions()
+                .position(CHARMANDER)
+                .title("Charmander")
+                    .snippet("Find Charmander at this location")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+        mCharmander.setTag(0);
+
 
         // Build Api Client
         buildApiClient();
@@ -154,7 +182,7 @@ public class LocationActivity extends FragmentActivity implements
                 markerOptions.title("Current location");
 
                 // Set color of marker
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 
                 // Now set it on current location
                 currentMarker = mMap.addMarker(markerOptions);
