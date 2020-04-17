@@ -7,11 +7,11 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
+
 import com.google.android.gms.location.LocationListener;
 
 import android.os.Build;
@@ -34,8 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 // FragmentActivity is basically the Google Maps activity
 
 public class LocationActivity extends FragmentActivity implements
-        OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener
-        {
+        OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private GoogleMap mMap;
     private GoogleApiClient ApiClient;
@@ -44,20 +43,22 @@ public class LocationActivity extends FragmentActivity implements
     private static final LatLng BALBASAUR = new LatLng(51.543200, 4.476770);
     private static final LatLng CHARMANDER = new LatLng(51.550529, 4.478660);
 
-
-    // Last location
+    // Last location user
     private Location lastLocation;
 
     // Use this to detect moving object, person etc.
     private LocationRequest locationRequest;
 
+    // Set marker user
     private Marker currentMarker;
+
+    // User location code
+    private static final int User_Location_Code = 99;
 
     // Set marker pokemons
     private Marker mBalbasaur;
     private Marker mCharmander;
 
-    private static final int User_Location_Code = 99;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class LocationActivity extends FragmentActivity implements
         setContentView(R.layout.activity_location);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                checkLocationPermission();
+            checkLocationPermission();
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -78,19 +79,20 @@ public class LocationActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add pokemon markers to map, and add data object to each marker
-
+        // Change width and height of Bitmap pokemons
         int height = 100;
         int width = 100;
-        BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.ic_pokemons);
+        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.ic_pokemons);
         Bitmap b = bitmapdraw.getBitmap();
         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+
+        // Add pokemon markers to map, and add data object to each marker
 
         // Balbasaur
         mBalbasaur = mMap.addMarker(new MarkerOptions()
                 .position(BALBASAUR)
                 .title("Balbasaur")
-                    .snippet("Find Balbasaur at this location")
+                .snippet("Find Balbasaur at this location")
                 .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
         mBalbasaur.setTag(0);
 
@@ -98,7 +100,7 @@ public class LocationActivity extends FragmentActivity implements
         mCharmander = mMap.addMarker(new MarkerOptions()
                 .position(CHARMANDER)
                 .title("Charmander")
-                    .snippet("Find Charmander at this location")
+                .snippet("Find Charmander at this location")
                 .icon(BitmapDescriptorFactory.fromBitmap(smallMarker)));
         mCharmander.setTag(0);
 
@@ -112,12 +114,11 @@ public class LocationActivity extends FragmentActivity implements
     }
 
     // Check if permission is granted or not
-
     public boolean checkLocationPermission() {
 
         // If permission is not granted
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, User_Location_Code);
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, User_Location_Code);
@@ -137,9 +138,9 @@ public class LocationActivity extends FragmentActivity implements
         switch (requestCode) {
             case User_Location_Code:
                 // This means the permission is granted
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        if(ApiClient == null) {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        if (ApiClient == null) {
                             // Will build new client
                             buildApiClient();
                         }
@@ -166,77 +167,77 @@ public class LocationActivity extends FragmentActivity implements
         ApiClient.connect();
     }
 
-            // Belongs to GoogleApiClient.LocationListener. Gets called when location has been changed
-            @Override
-            public void onLocationChanged(Location location) {
-                lastLocation = location;
+    // Belongs to GoogleApiClient.LocationListener. Gets called when location has been changed
+    @Override
+    public void onLocationChanged(Location location) {
+        lastLocation = location;
 
-                // Change bitmap size
-                int height = 100;
-                int width = 100;
-                BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.ic_pokemon_user);
-                Bitmap b = bitmapdraw.getBitmap();
-                Bitmap userMarker = Bitmap.createScaledBitmap(b, width, height, false);
+        // Change bitmap size for user marker
+        int height = 100;
+        int width = 100;
+        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.ic_pokemon_user);
+        Bitmap b = bitmapdraw.getBitmap();
+        Bitmap userMarker = Bitmap.createScaledBitmap(b, width, height, false);
 
-                // Check if marker has already been set to a previous location and remove that marker.
-                // Null means it has been set to another location
-                if(currentMarker != null) {
-                    currentMarker.remove();
-                }
-
-                // Set new location
-
-                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-
-                // Current position user
-
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(latLng);
-
-                // Set title current location of user
-                markerOptions.title("Current location");
-
-                // Set color of marker
-                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(userMarker));
-
-                // Now set it on current location
-                currentMarker = mMap.addMarker(markerOptions);
-
-                // Move camera to location
-
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15.0f)); // change numbers
-
-                // Start location update
-
-                if(ApiClient != null) {
-                    LocationServices.FusedLocationApi.removeLocationUpdates(ApiClient, this);
-                }
-            }
-
-            // Belongs to GoogleApiClient.connectionCallbacks. Gets called when user is connected
-            @Override
-            public void onConnected(@Nullable Bundle bundle) {
-
-                locationRequest = new LocationRequest();
-                locationRequest.setInterval(1100);
-                locationRequest.setFastestInterval(1100);
-                locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-
-                // Check permission
-                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    LocationServices.FusedLocationApi.requestLocationUpdates(ApiClient, locationRequest, this);
-                }
-            }
-
-            @Override
-            public void onConnectionSuspended(int i) {
-
-            }
-
-            // Belongs to GoogleApiClient.OnConnectionFailedListener. Gets called when user is disconnected
-            @Override
-            public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-            }
+        // Check if marker has already been set to a previous location and remove that marker.
+        // Null means it has been set to another location
+        if (currentMarker != null) {
+            currentMarker.remove();
         }
+
+        // Set new location
+
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+
+        // Current position user
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+
+        // Set title current location of user
+        markerOptions.title("Current location");
+
+        // Set color of marker
+        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(userMarker));
+
+        // Now set it on current location
+        currentMarker = mMap.addMarker(markerOptions);
+
+        // Move camera to location
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15.0f)); // change numbers
+
+        // Start location update
+
+        if (ApiClient != null) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(ApiClient, this);
+        }
+    }
+
+    // Belongs to GoogleApiClient.connectionCallbacks. Gets called when user is connected
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(1100);
+        locationRequest.setFastestInterval(1100);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+
+        // Check permission
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(ApiClient, locationRequest, this);
+        }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    // Belongs to GoogleApiClient.OnConnectionFailedListener. Gets called when user is disconnected
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+}

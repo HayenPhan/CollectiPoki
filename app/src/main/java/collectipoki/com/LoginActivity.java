@@ -1,18 +1,15 @@
 package collectipoki.com;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
-
     // Initialize SharedPreferences
     private SharedPreferenceConfig preferenceConfig;
     private EditText UserName, UserPassword;
@@ -28,19 +25,18 @@ public class LoginActivity extends AppCompatActivity {
         UserPassword = findViewById(R.id.user_password);
 
         // Check if user is logged in or not
-        if(preferenceConfig.readLoginStatus()) {
+        if (preferenceConfig.readLoginStatus()) {
             startActivity(new Intent(this, PokemonListActivity.class));
             finish();
         }
 
     }
 
-    public void loginUser (View view) {
-
+    public void loginUser(View view) {
         String username = UserName.getText().toString();
         String password = UserPassword.getText().toString();
 
-        if(username.equals(getResources().getString(R.string.user_name)) && password.equals(getResources().getString(R.string.user_password))) {
+        if (username.equals(getResources().getString(R.string.user_name)) && password.equals(getResources().getString(R.string.user_password))) {
             startActivity(new Intent(this, PokemonListActivity.class));
 
             // Save into shared preferences
@@ -55,10 +51,5 @@ public class LoginActivity extends AppCompatActivity {
 
             Log.i("test", password);
         }
-
-    }
-
-    private void showDialog() {
-
     }
 }

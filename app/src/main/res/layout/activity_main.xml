@@ -7,49 +7,47 @@
     android:nestedScrollingEnabled="false"
     tools:context=".PokemonListActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pokemon_list"
+        android:layout_width="425dp"
+        android:layout_height="833dp"
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/pokemon_list"
-            android:layout_width="425dp"
-            android:layout_height="833dp"
+        android:background="#FFFFFF"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            android:background="#FFFFFF"
-            android:nestedScrollingEnabled="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_main">
+    </androidx.recyclerview.widget.RecyclerView>
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="104dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/darkColor"
+        android:letterSpacing="0.1"
+        android:onClick="logOut"
+        android:padding="2dp"
+        android:text="logout"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="104dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/darkColor"
-            android:letterSpacing="0.1"
-            android:onClick="logOut"
-            android:padding="2dp"
-            android:text="logout"
-            android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/maps"
-            android:layout_width="104dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/darkColor"
-            android:letterSpacing="0.1"
-            android:onClick="redirectLocation"
-            android:padding="2dp"
-            android:text="Find pokemons"
-            android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logout" />
+    <Button
+        android:id="@+id/maps"
+        android:layout_width="104dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/darkColor"
+        android:letterSpacing="0.1"
+        android:onClick="redirectLocation"
+        android:padding="2dp"
+        android:text="Find pokemons"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

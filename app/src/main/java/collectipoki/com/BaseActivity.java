@@ -8,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 // Abstract will make sure that BaseActivity can only be used when extended.
-
 public abstract class BaseActivity extends AppCompatActivity {
-
     // Add Progressbar to this activity
     public ProgressBar mProgressBar;
 
@@ -36,6 +34,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void showProgressBar(boolean visible) {
         mProgressBar.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
     }
-
 }
 

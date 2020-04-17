@@ -16,67 +16,43 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import collectipoki.com.R;
-import collectipoki.com.customview.CustomView;
 import collectipoki.com.models.Pokemon;
-import collectipoki.com.adapters.OnPokemonListener;
 
 public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     // Add this after creating the PokemonViewHolder
 
-    //private List<Pokemon> mPokemons;
-    //private OnPokemonListener mOnPokemonListener;
-
-    //(1) Make arrayList with Nothing yet;
+    //(1) Create empty ArrayList
     private ArrayList<Pokemon> Pokemons = new ArrayList<>();
     private Context context;
     private OnPokemonListener mPokemonListener;
 
-    // set OnPokemonListener
+    // Set OnPokemonListener
     public void setOnPokemonListener(OnPokemonListener listener) {
-
         // mPokemonlistener is equal to the listener that gets passed
         mPokemonListener = listener;
     }
 
     // Constructor
-
     public PokemonRecyclerAdapter(Context context, ArrayList<Pokemon> Pokemons) {
-
-        //mOnPokemonListener = onPokemonListener;
-
-        //Log.i("PokemonRecyclerAdapter", String.valueOf(mOnPokemonListener));
-
         // (2) Later these will be replaced by PokemonRecyclerAdapter(this, mPokemonNames, mPokemonSpawnTimes, mPokemonImages) in PokemonListActivity
-
         this.Pokemons = Pokemons;
-        this.context=context;
-
+        this.context = context;
     }
 
     @NonNull
     @Override
     public PokemonRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-        //Log.i("onCreateViewHolder", String.valueOf(mOnPokemonListener));
-
-        //CustomView customview = new CustomView(viewGroup.getContext());
-
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_pokemon_list_item, viewGroup, false);
         return new PokemonRecyclerAdapter.ViewHolder(view);
-
-        //  return new PokemonViewHolder(view, mOnPokemonListener);
-
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Log.i("onBindViewHolder", "onBindViewHolder");
 
-        // set the image
+        // Set the image with Glide
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .error(R.drawable.ic_launcher_background);
@@ -86,24 +62,16 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 .load(Pokemons.get(position).getImg())
                 .into(((ViewHolder) holder).image);
 
+        // Set name and spawn time
         ((ViewHolder) holder).name.setText(Pokemons.get(position).getName());
         ((ViewHolder) holder).spawn_time.setText(Pokemons.get(position).getSpawn_time());
     }
 
-
+    // Log the size to see if there is data
     @Override
     public int getItemCount() {
-            Log.i("getItemCount", String.valueOf(Pokemons.size()));
-            return Pokemons.size();
+        return Pokemons.size();
     }
-
-    /*
-    // To check if the list has changed
-    public void setPokemons(ArrayList<String> pokemons) {
-        mPokemons = pokemons;
-        //Log.i("setPokemons", String.valueOf(mPokemons));
-        notifyDataSetChanged();
-    } */
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -120,11 +88,8 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         // When clicking on Pokemon View
         OnPokemonListener onPokemonListener;
 
-        public ViewHolder(View itemView) {  //public PokemonViewHolder(View itemView)
-
+        public ViewHolder(View itemView) {
             super(itemView);
-
-            //this.onPokemonListener = onPokemonListener;
 
             name = itemView.findViewById(R.id.pokemon_name);
             spawn_time = itemView.findViewById(R.id.pokemon_spawn_time);
@@ -136,11 +101,11 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View v) {
 
-                    if(mPokemonListener != null) {
+                    if (mPokemonListener != null) {
                         int position = getAdapterPosition();
 
-                        // Checks if position is still valid
-                        if(position != RecyclerView.NO_POSITION) {
+                        // Check if position is still valid
+                        if (position != RecyclerView.NO_POSITION) {
                             mPokemonListener.onPokemonClick(position);
                         }
                     }
@@ -148,17 +113,17 @@ public class PokemonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 }
             });
 
-            // Entire viewholder onclick
+            // Onclick method on entire ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // Check if the listener exists
 
-                    if(mPokemonListener != null) {
+                    if (mPokemonListener != null) {
                         int position = getAdapterPosition();
 
                         // Checks if position is still valid
-                        if(position != RecyclerView.NO_POSITION) {
+                        if (position != RecyclerView.NO_POSITION) {
                             mPokemonListener.onPokemonClick(position);
                         }
                     }

@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import java.util.Arrays;
 
 // Parcelable is just a way to pack java objects, custom java classes. So that they can be added to bundles or passed to Activities or bundles.
-
 public class Pokemon implements Parcelable {
     private String name;
     private String height;

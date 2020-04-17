@@ -8,7 +8,7 @@ public class SharedPreferenceConfig {
     private SharedPreferences sharedPreferences;
     private Context context;
 
-    //
+    // Define the context for shared preferences
     public SharedPreferenceConfig(Context context) {
         this.context = context;
         sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.login_preference), Context.MODE_PRIVATE);
@@ -23,6 +23,7 @@ public class SharedPreferenceConfig {
 
     }
 
+    // Read login status
     public boolean readLoginStatus() {
         boolean status = false;
         status = sharedPreferences.getBoolean(context.getResources().getString(R.string.login_status_preference), false);

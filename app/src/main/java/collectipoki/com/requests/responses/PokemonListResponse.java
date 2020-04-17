@@ -7,9 +7,8 @@ import java.util.List;
 
 import collectipoki.com.models.Pokemon;
 
-// Actually Pokemon Search Response (ALL)
+// Response of Pokemon List
 public class PokemonListResponse {
-
     @SerializedName("pokemon")
     @Expose()
     private List<Pokemon> pokemons;
@@ -19,8 +18,7 @@ public class PokemonListResponse {
         return pokemons;
     }
 
-    //toString() to convert
-
+    //toString() to convert it to a string
     @Override
     public String toString() {
         return "PokemonListResponse{" +

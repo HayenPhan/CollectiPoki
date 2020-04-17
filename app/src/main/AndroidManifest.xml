@@ -31,7 +31,6 @@
         <activity
             android:name=".LocationActivity"
             android:label="@string/title_activity_location"></activity>
-        <activity android:name=".LayoutChangeActivity" />
         <activity android:name=".PokemonDetailActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
